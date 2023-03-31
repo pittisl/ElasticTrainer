@@ -31,7 +31,7 @@ Below shows an example of training ResNet50 on CUB-200 dataset with our ElasticT
 ```
 python3 profiler.py --model_name resnet50 --num_classes 200
 ```
-Then start training your model on the device with speedup ratio of 0.5 (i.e., 2x):
+Then start training your model on the device with speedup ratio of 0.5 (i.e., 2x faster):
 ```
 python3 main.py --model_name resnet50 \
                 --dataset_name caltech_birds2011 \

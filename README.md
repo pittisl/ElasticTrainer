@@ -29,12 +29,13 @@ Supported datasets:
 
 Below shows an example of training ResNet50 on CUB-200 dataset with our ElasticTrainer. First, profile the tensor timing on your dedicated device:
 ```
-python3 profiler.py --model_name resnet50 --num_classes 200
+python profiler.py --model_name resnet50 \
+                   --num_classes 200
 ```
 Then start training your model on the device with speedup ratio of 0.5 (i.e., 2x faster):
 ```
-python3 main.py --model_name resnet50 \
-                --dataset_name caltech_birds2011 \
-                --train_type elastic_training \
-                --rho 0.5
+python main.py --model_name resnet50 \
+               --dataset_name caltech_birds2011 \
+               --train_type elastic_training \
+               --rho 0.5
 ```

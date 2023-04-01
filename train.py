@@ -121,8 +121,13 @@ def full_training(
     
         clear_cache_and_rec_usage()
     
-    print("total time excluding validation (s):", total_time_0)
-    print("total time including validation (s):", total_time_1)
+    # print("total time excluding validation (s):", total_time_0)
+    # print("total time including validation (s):", total_time_1)
+    print('===============================================')
+    print('Training Type: Full training')
+    print(f"Accuracy (%): {best_validation_acc*100:.2f}")
+    print(f"Time (h): {total_time_0/3600:.2f}")
+    print('===============================================')
     # sig_stop_handler(None, None)
 
 def bn_plus_bias_training(
@@ -245,8 +250,13 @@ def bn_plus_bias_training(
 
         clear_cache_and_rec_usage()
     
-    print("total time excluding validation (s):", total_time_0)
-    print("total time including validation (s):", total_time_1)
+    # print("total time excluding validation (s):", total_time_0)
+    # print("total time including validation (s):", total_time_1)
+    print('===============================================')
+    print('Training Type: BN+Bias')
+    print(f"Accuracy (%): {best_validation_acc*100:.2f}")
+    print(f"Time (h): {total_time_0/3600:.2f}")
+    print('===============================================')
     # sig_stop_handler(None, None)
 
 def traditional_tl_training(
@@ -370,8 +380,13 @@ def traditional_tl_training(
 
         clear_cache_and_rec_usage()
 
-    print("total time excluding validation (s):", total_time_0)
-    print("total time including validation (s):", total_time_1)
+    # print("total time excluding validation (s):", total_time_0)
+    # print("total time including validation (s):", total_time_1)
+    print('===============================================')
+    print('Training Type: Traditional TL')
+    print(f"Accuracy (%): {best_validation_acc*100:.2f}")
+    print(f"Time (h): {total_time_0/3600:.2f}")
+    print('===============================================')
     # sig_stop_handler(None, None)
 
 def elastic_training(
@@ -545,8 +560,13 @@ def elastic_training(
         print("per epoch time(s) including validation:", t2 - t0)
         total_time_1 += (t2 - t0)
     
-    print("total time excluding validation (s):", total_time_0)
-    print("total time including validation (s):", total_time_1)
+    # print("total time excluding validation (s):", total_time_0)
+    # print("total time including validation (s):", total_time_1)
+    print('===============================================')
+    print('Training Type: ElasticTrainer')
+    print(f"Accuracy (%): {best_validation_acc*100:.2f}")
+    print(f"Time (h): {total_time_0/3600:.2f}")
+    print('===============================================')
     # sig_stop_handler(None, None)
 
 def elastic_training_weight_magnitude(
@@ -695,8 +715,13 @@ def elastic_training_weight_magnitude(
         print("per epoch time(s) including validation:", t2 - t0)
         total_time_1 += (t2 - t0)
     
-    print("total time excluding validation (s):", total_time_0)
-    print("total time including validation (s):", total_time_1)
+    # print("total time excluding validation (s):", total_time_0)
+    # print("total time including validation (s):", total_time_1)
+    print('===============================================')
+    print('Training Type: ElasticTrainer Mag')
+    print(f"Accuracy (%): {best_validation_acc*100:.2f}")
+    print(f"Time (h): {total_time_0/3600:.2f}")
+    print('===============================================')
     # sig_stop_handler(None, None)
 
 def elastic_training_grad_magnitude(
@@ -858,8 +883,13 @@ def elastic_training_grad_magnitude(
         print("per epoch time(s) including validation:", t2 - t0)
         total_time_1 += (t2 - t0)
     
-    print("total time excluding validation (s):", total_time_0)
-    print("total time including validation (s):", total_time_1)
+    # print("total time excluding validation (s):", total_time_0)
+    # print("total time including validation (s):", total_time_1)
+    print('===============================================')
+    print('Training Type: ElasticTrainer Grad')
+    print(f"Accuracy (%): {best_validation_acc*100:.2f}")
+    print(f"Time (h): {total_time_0/3600:.2f}")
+    print('===============================================')
     # sig_stop_handler(None, None)
 
 def prune_training(
@@ -979,6 +1009,11 @@ def prune_training(
     
         clear_cache_and_rec_usage()
     
-    print("total time excluding validation (s):", total_time_0)
-    print("total time including validation (s):", total_time_1)
+    # print("total time excluding validation (s):", total_time_0)
+    # print("total time including validation (s):", total_time_1)
+    print('===============================================')
+    print('Training Type: PruneTrain')
+    print(f"Accuracy (%): {best_validation_acc*100:.2f}")
+    print(f"Time (h): {total_time_0/3600:.2f}")
+    print('===============================================')
     # sig_stop_handler(None, None)

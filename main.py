@@ -7,7 +7,8 @@ from train import (full_training,
                    bn_plus_bias_training, 
                    elastic_training,
                    elastic_training_weight_magnitude,
-                   elastic_training_grad_magnitude)
+                   elastic_training_grad_magnitude,
+                   prune_training)
 import argparse
 import signal
 
@@ -26,6 +27,8 @@ parser.add_argument('--optimizer', type=str, default='sgd', help='valid optimize
 parser.add_argument('--learning_rate', type=float, default=1e-4, help='learning rate')
 parser.add_argument('--weight_decay', type=float, default=5e-4, help='weight decay for sgd')
 parser.add_argument('--num_epochs', type=int, default=12, help='number of training epochs')
+parser.add_argument('--run_name', type=str, default='auto', help='whether to use auto-generated (auto) or user-defined run name')
+parser.add_argument('--save_model', type=bool, default=False, help='whether to save the trained model')
 
 parser.add_argument('--interval', type=float, default=4, help='interval (in epoch) of tensor importance evaluation')
 parser.add_argument('--rho', type=float, default=0.533, help='speedup ratio')
@@ -42,10 +45,18 @@ optimizer = args.optimizer
 learning_rate = args.learning_rate
 weight_decay = args.weight_decay
 num_epochs = args.num_epochs
+run_name = args.run_name
+save_model = args.save_model
 interval = args.interval
 rho = args.rho
 
-run_name = model_name + '_' + dataset_name + '_' + train_type
+disable_random_id = False
+
+if run_name == 'auto':
+    run_name = model_name + '_' + dataset_name + '_' + train_type
+else:
+    disable_random_id = True
+    
 logdir = 'logs'
 timing_info = model_name + '_' + str(input_size) + '_' + str(num_classes) + '_' + str(batch_size) + '_' + 'profile'
 
@@ -85,6 +96,8 @@ if train_type == 'full_training':
         lr=learning_rate,
         weight_decay=weight_decay,
         epochs=num_epochs,
+        disable_random_id=disable_random_id,
+        save_model=save_model,
     )
 elif train_type == 'traditional_tl_training':
     traditional_tl_training(
@@ -97,6 +110,8 @@ elif train_type == 'traditional_tl_training':
         lr=learning_rate,
         weight_decay=weight_decay,
         epochs=num_epochs,
+        disable_random_id=disable_random_id,
+        save_model=save_model,
     )
 elif train_type == 'bn_plus_bias_training':
     bn_plus_bias_training(
@@ -109,6 +124,8 @@ elif train_type == 'bn_plus_bias_training':
         lr=learning_rate,
         weight_decay=weight_decay,
         epochs=num_epochs,
+        disable_random_id=disable_random_id,
+        save_model=save_model,
     )
 elif train_type == 'elastic_training':
     elastic_training(
@@ -125,6 +142,8 @@ elif train_type == 'elastic_training':
         epochs=num_epochs,
         interval=interval,
         rho=rho,
+        disable_random_id=disable_random_id,
+        save_model=save_model,
     )
 
 elif train_type == 'elastic_training_weight_magnitude':
@@ -142,6 +161,8 @@ elif train_type == 'elastic_training_weight_magnitude':
         epochs=num_epochs,
         interval=interval,
         rho=rho,
+        disable_random_id=disable_random_id,
+        save_model=save_model,
     )
 
 elif train_type == 'elastic_training_grad_magnitude':
@@ -159,6 +180,23 @@ elif train_type == 'elastic_training_grad_magnitude':
         epochs=num_epochs,
         interval=interval,
         rho=rho,
+        disable_random_id=disable_random_id,
+        save_model=save_model,
+    )
+    
+elif train_type == 'prunetrain':
+    prune_training(
+        model,
+        train_dataset,
+        test_dataset,
+        run_name,
+        logdir,
+        optim=optimizer,
+        lr=learning_rate,
+        weight_decay=weight_decay,
+        epochs=num_epochs,
+        disable_random_id=disable_random_id,
+        save_model=save_model,
     )
 
 else:

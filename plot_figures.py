@@ -37,6 +37,7 @@ def plot_single_curve(
     y_tag,
     path_to_elastic_training,
     figure_id,
+    figure_name,
 ):
     """plot ElasticTrainer results as a single curve excluding baselines
 
@@ -66,6 +67,7 @@ def plot_single_curve(
     plt.legend(fontsize=16)
     plt.grid()
     plt.tight_layout()
+    plt.savefig(figure_name, format="pdf", bbox_inches="tight")
     plt.show()
     
 
@@ -77,6 +79,7 @@ def plot_multiple_curves(
     path_to_traditional_tl,
     path_to_bn_plus_bias,
     figure_id,
+    figure_name,
 ):
     """plot training results as curves including baselines
 
@@ -117,12 +120,13 @@ def plot_multiple_curves(
     plt.legend(fontsize=16)
     plt.grid()
     plt.tight_layout()
+    plt.savefig(figure_name, format="pdf", bbox_inches="tight")
     plt.show()
 
 def main():
     parser = argparse.ArgumentParser(description='Plot experiment results')
     parser.add_argument('--x_tag', type=str, default='wall_time', help="one from ['wall_time', 'step']")
-    parser.add_argument('--y_tag', type=int, default='accuracy', help="['train/accuracy', 'train/classification_loss',\
+    parser.add_argument('--y_tag', type=str, default='accuracy', help="['train/accuracy', 'train/classification_loss',\
         'train/learnig_rate', 'test/classification_loss', 'test/accuracy']")
     parser.add_argument('--single', type=bool, default=True, help='batch size used to run during profiling')
     parser.add_argument('--elastic_trainer_path', type=str, default='TBD', help='path to log of elastic_trainer')
@@ -130,6 +134,7 @@ def main():
     parser.add_argument('--traditional_tl_path', type=str, default='TBD', help='path to log of elastic_trainer')
     parser.add_argument('--bn_plus_bias_path', type=str, default='TBD', help='path to log of bn_plus_bias')
     parser.add_argument('--figure_id', type=int, default=1, help='figure id')
+    parser.add_argument('--figure_name', type=str, default='TBD', help='figure name')
     
     args = parser.parse_args()
     
@@ -141,6 +146,7 @@ def main():
     traditional_tl_path = args.traditional_tl_path
     bn_plus_bias_path = args.bn_plus_bias_path
     figure_id = args.figure_id
+    figure_name = args.figure_name
     
     if single:
         plot_single_curve(
@@ -148,6 +154,7 @@ def main():
             y_tag,
             'logs/' + elastic_trainer_path,
             figure_id,
+            'figures/' + figure_name,
         )
     else:
         plot_multiple_curves(
@@ -158,6 +165,7 @@ def main():
             'logs/' + traditional_tl_path,
             'logs/' + bn_plus_bias_path,
             figure_id,
+            'figures/' + figure_name,
         )
 
 if __name__ == '__main__':

@@ -13,13 +13,15 @@ python3 plot_figures.py --x_tag wall_time \
                         --y_tag test/accuracy \
                         --single True \
                         --elastic_trainer_path CUB200_ElasticTrainer \
-                        --figure_id 1
+                        --figure_id 1 \
+                        --figure_name Figure16_a_ego.pdf
 
 python3 plot_figures.py --x_tag wall_time \
                         --y_tag test/classification_loss \
                         --single True \
                         --elastic_trainer_path CUB200_ElasticTrainer \
-                        --figure_id 2
+                        --figure_id 2 \
+                        --figure_name Figure16_c_ego.pdf
 
 # oxford_iiit_pet
 python3 profiler.py --model_name resnet50 \
@@ -29,10 +31,12 @@ python3 plot_figures.py --x_tag wall_time \
                         --y_tag test/accuracy \
                         --single True \
                         --elastic_trainer_path PET37_ElasticTrainer \
-                        --figure_id 3
+                        --figure_id 3 \
+                        --figure_name Figure16_b_ego.pdf
 
 python3 plot_figures.py --x_tag wall_time \
                         --y_tag test/classification_loss \
                         --single True \
                         --elastic_trainer_path PET37_ElasticTrainer \
-                        --figure_id 4
+                        --figure_id 4 \
+                        --figure_name Figure16_d_ego.pdf

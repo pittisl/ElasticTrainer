@@ -31,7 +31,8 @@ python3 plot_figures.py --x_tag wall_time \
                         --full_training_path CUB200_Full_training \
                         --traditional_tl_path CUB200_Traditional_TL \
                         --bn_plus_bias_path CUB200_BN+Bias \
-                        --figure_id 1
+                        --figure_id 1 \
+                        --figure_name Figure_15_a.pdf
 
 python3 plot_figures.py --x_tag wall_time \
                         --y_tag test/classification_loss \
@@ -40,7 +41,8 @@ python3 plot_figures.py --x_tag wall_time \
                         --full_training_path CUB200_Full_training \
                         --traditional_tl_path CUB200_Traditional_TL \
                         --bn_plus_bias_path CUB200_BN+Bias \
-                        --figure_id 2
+                        --figure_id 2 \
+                        --figure_name Figure_15_d.pdf
 
 # oxford_iiit_pet
 python3 profiler.py --model_name resnet50 \
@@ -73,7 +75,8 @@ python3 plot_figures.py --x_tag wall_time \
                         --full_training_path PET37_Full_training \
                         --traditional_tl_path PET37_Traditional_TL \
                         --bn_plus_bias_path PET37_BN+Bias \
-                        --figure_id 3
+                        --figure_id 3 \
+                        --figure_name Figure_15_b.pdf
 
 python3 plot_figures.py --x_tag wall_time \
                         --y_tag test/classification_loss \
@@ -82,7 +85,8 @@ python3 plot_figures.py --x_tag wall_time \
                         --full_training_path PET37_Full_training \
                         --traditional_tl_path PET37_Traditional_TL \
                         --bn_plus_bias_path PET37_BN+Bias \
-                        --figure_id 4
+                        --figure_id 4 \
+                        --figure_name Figure_15_e.pdf
 
 # stanford_dogs
 python3 profiler.py --model_name resnet50 \
@@ -115,7 +119,8 @@ python3 plot_figures.py --x_tag wall_time \
                         --full_training_path DOG120_Full_training \
                         --traditional_tl_path DOG120_Traditional_TL \
                         --bn_plus_bias_path DOG120_BN+Bias \
-                        --figure_id 5
+                        --figure_id 5 \
+                        --figure_name Figure_15_c.pdf
 
 python3 plot_figures.py --x_tag wall_time \
                         --y_tag test/classification_loss \
@@ -124,4 +129,5 @@ python3 plot_figures.py --x_tag wall_time \
                         --full_training_path DOG120_Full_training \
                         --traditional_tl_path DOG120_Traditional_TL \
                         --bn_plus_bias_path DOG120_BN+Bias \
-                        --figure_id 6
+                        --figure_id 6 \
+                        --figure_name Figure_15_f.pdf

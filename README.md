@@ -1,7 +1,7 @@
 # Introduction
 This code repository stores program implementation for the accepted MobiSys 2023 paper "ElasticTrainer: Speeding Up On-Device Training with Runtime Elastic Tensor Selection". According to our paper, the code is intended to be run on embedded devices (e.g., Raspberry Pi and Nvidia Jetson TX2), but also applicable to workstations.
 
-If you just want to take a look at the core of our implementation, please see `profiler.py`, `elastic_training` in `train.py`, and `selection_solver_DP.py`.
+If you want to quickly review the core of our implementation, please see `profiler.py`, `elastic_training` in `train.py`, and `selection_solver_DP.py`.
 
 **The current code has NOT been finalized yet. Stay tuned for camera-ready paper release**.
 

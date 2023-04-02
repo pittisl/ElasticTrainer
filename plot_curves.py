@@ -4,6 +4,7 @@ from tensorboard.backend.event_processing.event_accumulator import EventAccumula
 import matplotlib.pyplot as plt
 import argparse
 
+
 def read_data_from_tfboard_logs(path, x_tag, y_tag):
     """load logged training metrics into numpy arrays
 
@@ -68,7 +69,7 @@ def plot_single_curve(
     plt.grid()
     plt.tight_layout()
     plt.savefig(figure_name, format="pdf", bbox_inches="tight")
-    plt.show()
+    # plt.show()
     
 
 def plot_multiple_curves(
@@ -121,10 +122,10 @@ def plot_multiple_curves(
     plt.grid()
     plt.tight_layout()
     plt.savefig(figure_name, format="pdf", bbox_inches="tight")
-    plt.show()
+    # plt.show()
 
 def main():
-    parser = argparse.ArgumentParser(description='Plot experiment results')
+    parser = argparse.ArgumentParser(description='Plot experiment results as curves')
     parser.add_argument('--x_tag', type=str, default='wall_time', help="one from ['wall_time', 'step']")
     parser.add_argument('--y_tag', type=str, default='accuracy', help="['train/accuracy', 'train/classification_loss',\
         'train/learnig_rate', 'test/classification_loss', 'test/accuracy']")

@@ -29,6 +29,7 @@ parser.add_argument('--weight_decay', type=float, default=5e-4, help='weight dec
 parser.add_argument('--num_epochs', type=int, default=12, help='number of training epochs')
 parser.add_argument('--run_name', type=str, default='auto', help='whether to use auto-generated (auto) or user-defined run name')
 parser.add_argument('--save_model', type=bool, default=False, help='whether to save the trained model')
+parser.add_argument('--save_txt', type=bool, default=False, help='whether to save the final accuracy and wall time into txt')
 
 parser.add_argument('--interval', type=float, default=4, help='interval (in epoch) of tensor importance evaluation')
 parser.add_argument('--rho', type=float, default=0.533, help='speedup ratio')
@@ -47,6 +48,7 @@ weight_decay = args.weight_decay
 num_epochs = args.num_epochs
 run_name = args.run_name
 save_model = args.save_model
+save_txt = args.save_txt
 interval = args.interval
 rho = args.rho
 
@@ -98,6 +100,7 @@ if train_type == 'full_training':
         epochs=num_epochs,
         disable_random_id=disable_random_id,
         save_model=save_model,
+        save_txt=save_txt,
     )
 elif train_type == 'traditional_tl_training':
     traditional_tl_training(
@@ -112,6 +115,7 @@ elif train_type == 'traditional_tl_training':
         epochs=num_epochs,
         disable_random_id=disable_random_id,
         save_model=save_model,
+        save_txt=save_txt,
     )
 elif train_type == 'bn_plus_bias_training':
     bn_plus_bias_training(
@@ -126,6 +130,7 @@ elif train_type == 'bn_plus_bias_training':
         epochs=num_epochs,
         disable_random_id=disable_random_id,
         save_model=save_model,
+        save_txt=save_txt,
     )
 elif train_type == 'elastic_training':
     elastic_training(
@@ -144,6 +149,7 @@ elif train_type == 'elastic_training':
         rho=rho,
         disable_random_id=disable_random_id,
         save_model=save_model,
+        save_txt=save_txt,
     )
 
 elif train_type == 'elastic_training_weight_magnitude':
@@ -163,6 +169,7 @@ elif train_type == 'elastic_training_weight_magnitude':
         rho=rho,
         disable_random_id=disable_random_id,
         save_model=save_model,
+        save_txt=save_txt,
     )
 
 elif train_type == 'elastic_training_grad_magnitude':
@@ -182,6 +189,7 @@ elif train_type == 'elastic_training_grad_magnitude':
         rho=rho,
         disable_random_id=disable_random_id,
         save_model=save_model,
+        save_txt=save_txt,
     )
     
 elif train_type == 'prunetrain':
@@ -197,6 +205,7 @@ elif train_type == 'prunetrain':
         epochs=num_epochs,
         disable_random_id=disable_random_id,
         save_model=save_model,
+        save_txt=save_txt,
     )
 
 else:

@@ -24,25 +24,25 @@ python3 main.py --model_name resnet50 \
                 --train_type bn_plus_bias_training \
                 --run_name CUB200_BN+Bias
 
-python3 plot_figures.py --x_tag wall_time \
-                        --y_tag test/accuracy \
-                        --single False \
-                        --elastic_trainer_path CUB200_ElasticTrainer \
-                        --full_training_path CUB200_Full_training \
-                        --traditional_tl_path CUB200_Traditional_TL \
-                        --bn_plus_bias_path CUB200_BN+Bias \
-                        --figure_id 1 \
-                        --figure_name Figure16_a.pdf
+python3 plot_curves.py --x_tag wall_time \
+                       --y_tag test/accuracy \
+                       --single False \
+                       --elastic_trainer_path CUB200_ElasticTrainer \
+                       --full_training_path CUB200_Full_training \
+                       --traditional_tl_path CUB200_Traditional_TL \
+                       --bn_plus_bias_path CUB200_BN+Bias \
+                       --figure_id 1 \
+                       --figure_name Figure_16_a.pdf
 
-python3 plot_figures.py --x_tag wall_time \
-                        --y_tag test/classification_loss \
-                        --single False \
-                        --elastic_trainer_path CUB200_ElasticTrainer \
-                        --full_training_path CUB200_Full_training \
-                        --traditional_tl_path CUB200_Traditional_TL \
-                        --bn_plus_bias_path CUB200_BN+Bias \
-                        --figure_id 2 \
-                        --figure_name Figure16_c.pdf
+python3 plot_curves.py --x_tag wall_time \
+                       --y_tag test/classification_loss \
+                       --single False \
+                       --elastic_trainer_path CUB200_ElasticTrainer \
+                       --full_training_path CUB200_Full_training \
+                       --traditional_tl_path CUB200_Traditional_TL \
+                       --bn_plus_bias_path CUB200_BN+Bias \
+                       --figure_id 2 \
+                       --figure_name Figure_16_c.pdf
 
 # oxford_iiit_pet
 python3 profiler.py --model_name resnet50 \
@@ -68,22 +68,22 @@ python3 main.py --model_name resnet50 \
                 --train_type bn_plus_bias_training \
                 --run_name PET37_BN+Bias
 
-python3 plot_figures.py --x_tag wall_time \
-                        --y_tag test/accuracy \
-                        --single False \
-                        --elastic_trainer_path PET37_ElasticTrainer \
-                        --full_training_path PET37_Full_training \
-                        --traditional_tl_path PET37_Traditional_TL \
-                        --bn_plus_bias_path PET37_BN+Bias \
-                        --figure_id 3 \
-                        --figure_name Figure16_b.pdf
+python3 plot_curves.py --x_tag wall_time \
+                       --y_tag test/accuracy \
+                       --single False \
+                       --elastic_trainer_path PET37_ElasticTrainer \
+                       --full_training_path PET37_Full_training \
+                       --traditional_tl_path PET37_Traditional_TL \
+                       --bn_plus_bias_path PET37_BN+Bias \
+                       --figure_id 3 \
+                       --figure_name Figure_16_b.pdf
 
-python3 plot_figures.py --x_tag wall_time \
-                        --y_tag test/classification_loss \
-                        --single False \
-                        --elastic_trainer_path PET37_ElasticTrainer \
-                        --full_training_path PET37_Full_training \
-                        --traditional_tl_path PET37_Traditional_TL \
-                        --bn_plus_bias_path PET37_BN+Bias \
-                        --figure_id 4 \
-                        --figure_name Figure16_d.pdf
+python3 plot_curves.py --x_tag wall_time \
+                       --y_tag test/classification_loss \
+                       --single False \
+                       --elastic_trainer_path PET37_ElasticTrainer \
+                       --full_training_path PET37_Full_training \
+                       --traditional_tl_path PET37_Traditional_TL \
+                       --bn_plus_bias_path PET37_BN+Bias \
+                       --figure_id 4 \
+                       --figure_name Figure_16_d.pdf

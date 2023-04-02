@@ -22,6 +22,7 @@ def full_training(
     epochs=12,
     disable_random_id=False,
     save_model=False,
+    save_txt=False,
 ):
     """All NN weights will be trained"""
 
@@ -123,11 +124,15 @@ def full_training(
     
     # print("total time excluding validation (s):", total_time_0)
     # print("total time including validation (s):", total_time_1)
+    best_validation_acc = best_validation_acc.numpy() * 100
+    total_time_0 /= 3600
     print('===============================================')
     print('Training Type: Full training')
-    print(f"Accuracy (%): {best_validation_acc*100:.2f}")
-    print(f"Time (h): {total_time_0/3600:.2f}")
+    print(f"Accuracy (%): {best_validation_acc:.2f}")
+    print(f"Time (h): {total_time_0:.2f}")
     print('===============================================')
+    if save_txt:
+        np.savetxt(logdir + '/' + runid + '.txt', np.array([total_time_0, best_validation_acc]))
     # sig_stop_handler(None, None)
 
 def bn_plus_bias_training(
@@ -142,6 +147,7 @@ def bn_plus_bias_training(
     epochs=12,
     disable_random_id=False,
     save_model=False,
+    save_txt=False,
 ):
     """Only train normalization, bias, and last layer weights"""
     if optim == 'sgd':
@@ -252,11 +258,15 @@ def bn_plus_bias_training(
     
     # print("total time excluding validation (s):", total_time_0)
     # print("total time including validation (s):", total_time_1)
+    best_validation_acc = best_validation_acc.numpy() * 100
+    total_time_0 /= 3600
     print('===============================================')
-    print('Training Type: BN+Bias')
-    print(f"Accuracy (%): {best_validation_acc*100:.2f}")
-    print(f"Time (h): {total_time_0/3600:.2f}")
+    print('Training Type: Full training')
+    print(f"Accuracy (%): {best_validation_acc:.2f}")
+    print(f"Time (h): {total_time_0:.2f}")
     print('===============================================')
+    if save_txt:
+        np.savetxt(logdir + '/' + runid + '.txt', np.array([total_time_0, best_validation_acc]))
     # sig_stop_handler(None, None)
 
 def traditional_tl_training(
@@ -271,6 +281,7 @@ def traditional_tl_training(
     epochs=12,
     disable_random_id=False,
     save_model=False,
+    save_txt=False,
 ):
     """Only train last layer weights"""
     
@@ -382,11 +393,15 @@ def traditional_tl_training(
 
     # print("total time excluding validation (s):", total_time_0)
     # print("total time including validation (s):", total_time_1)
+    best_validation_acc = best_validation_acc.numpy() * 100
+    total_time_0 /= 3600
     print('===============================================')
-    print('Training Type: Traditional TL')
-    print(f"Accuracy (%): {best_validation_acc*100:.2f}")
-    print(f"Time (h): {total_time_0/3600:.2f}")
+    print('Training Type: Full training')
+    print(f"Accuracy (%): {best_validation_acc:.2f}")
+    print(f"Time (h): {total_time_0:.2f}")
     print('===============================================')
+    if save_txt:
+        np.savetxt(logdir + '/' + runid + '.txt', np.array([total_time_0, best_validation_acc]))
     # sig_stop_handler(None, None)
 
 def elastic_training(
@@ -405,6 +420,7 @@ def elastic_training(
     rho=0.533,
     disable_random_id=False,
     save_model=False,
+    save_txt=False,
 ):
     """Train with ElasticTrainer"""
 
@@ -562,11 +578,15 @@ def elastic_training(
     
     # print("total time excluding validation (s):", total_time_0)
     # print("total time including validation (s):", total_time_1)
+    best_validation_acc = best_validation_acc.numpy() * 100
+    total_time_0 /= 3600
     print('===============================================')
-    print('Training Type: ElasticTrainer')
-    print(f"Accuracy (%): {best_validation_acc*100:.2f}")
-    print(f"Time (h): {total_time_0/3600:.2f}")
+    print('Training Type: Full training')
+    print(f"Accuracy (%): {best_validation_acc:.2f}")
+    print(f"Time (h): {total_time_0:.2f}")
     print('===============================================')
+    if save_txt:
+        np.savetxt(logdir + '/' + runid + '.txt', np.array([total_time_0, best_validation_acc]))
     # sig_stop_handler(None, None)
 
 def elastic_training_weight_magnitude(
@@ -585,6 +605,7 @@ def elastic_training_weight_magnitude(
     rho=0.533,
     disable_random_id=False,
     save_model=False,
+    save_txt=False,
 ):
     """Train with ElasticTrainer but use weight magnitude as importance metric"""
 
@@ -717,11 +738,15 @@ def elastic_training_weight_magnitude(
     
     # print("total time excluding validation (s):", total_time_0)
     # print("total time including validation (s):", total_time_1)
+    best_validation_acc = best_validation_acc.numpy() * 100
+    total_time_0 /= 3600
     print('===============================================')
-    print('Training Type: ElasticTrainer Mag')
-    print(f"Accuracy (%): {best_validation_acc*100:.2f}")
-    print(f"Time (h): {total_time_0/3600:.2f}")
+    print('Training Type: Full training')
+    print(f"Accuracy (%): {best_validation_acc:.2f}")
+    print(f"Time (h): {total_time_0:.2f}")
     print('===============================================')
+    if save_txt:
+        np.savetxt(logdir + '/' + runid + '.txt', np.array([total_time_0, best_validation_acc]))
     # sig_stop_handler(None, None)
 
 def elastic_training_grad_magnitude(
@@ -740,6 +765,7 @@ def elastic_training_grad_magnitude(
     rho=0.4,
     disable_random_id=False,
     save_model=False,
+    save_txt=False,
 ):
     """Train with ElasticTrainer but use gradient magnitude as importance metric"""
 
@@ -885,11 +911,15 @@ def elastic_training_grad_magnitude(
     
     # print("total time excluding validation (s):", total_time_0)
     # print("total time including validation (s):", total_time_1)
+    best_validation_acc = best_validation_acc.numpy() * 100
+    total_time_0 /= 3600
     print('===============================================')
-    print('Training Type: ElasticTrainer Grad')
-    print(f"Accuracy (%): {best_validation_acc*100:.2f}")
-    print(f"Time (h): {total_time_0/3600:.2f}")
+    print('Training Type: Full training')
+    print(f"Accuracy (%): {best_validation_acc:.2f}")
+    print(f"Time (h): {total_time_0:.2f}")
     print('===============================================')
+    if save_txt:
+        np.savetxt(logdir + '/' + runid + '.txt', np.array([total_time_0, best_validation_acc]))
     # sig_stop_handler(None, None)
 
 def prune_training(
@@ -904,6 +934,7 @@ def prune_training(
     epochs=12,
     disable_random_id=False,
     save_model=False,
+    save_txt=False,
 ):
     """All NN weights will be trained"""
 
@@ -1011,9 +1042,13 @@ def prune_training(
     
     # print("total time excluding validation (s):", total_time_0)
     # print("total time including validation (s):", total_time_1)
+    best_validation_acc = best_validation_acc.numpy() * 100
+    total_time_0 /= 3600
     print('===============================================')
-    print('Training Type: PruneTrain')
-    print(f"Accuracy (%): {best_validation_acc*100:.2f}")
-    print(f"Time (h): {total_time_0/3600:.2f}")
+    print('Training Type: Full training')
+    print(f"Accuracy (%): {best_validation_acc:.2f}")
+    print(f"Time (h): {total_time_0:.2f}")
     print('===============================================')
+    if save_txt:
+        np.savetxt(logdir + '/' + runid + '.txt', np.array([total_time_0, best_validation_acc]))
     # sig_stop_handler(None, None)

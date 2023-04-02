@@ -210,7 +210,7 @@ def main():
             'logs/' + path_to_bn_plus_bias_vgg16 + '.txt',
             'logs/' + path_to_bn_plus_bias_mobilenetv2 + '.txt',
             figure_id,
-            figure_name,
+            'figures/' + figure_name,
         )
     else:
         plot_different_models(
@@ -218,7 +218,7 @@ def main():
             'logs/' + path_to_elastic_trainer_vgg16 + '.txt',
             'logs/' + path_to_elastic_trainer_mobilenetv2 + '.txt',
             figure_id,
-            figure_name,
+            'figures/' + figure_name,
         )
 
 if __name__ == '__main__':

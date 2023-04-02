@@ -175,7 +175,7 @@ def main():
             'logs/' + path_to_rho60 + '.txt',
             'logs/' + path_to_rho70 + '.txt',
             figure_id,
-            figure_name,
+            'figures/' + figure_name,
         )
     else:
         plot_different_speedup_ratios(
@@ -189,7 +189,7 @@ def main():
             'logs/' + path_to_bn_plus_bias + '.txt',
             'logs/' + path_to_prunetrain + '.txt',
             figure_id,
-            figure_name,
+            'figures/' + figure_name,
         )
 
 if __name__ == '__main__':

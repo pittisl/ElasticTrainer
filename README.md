@@ -10,7 +10,8 @@ If you want to quickly review the core of our implementation, please see `profil
 * tensorflow 2
 * tensorflow-datasets
 * tensorflow-addons
-* vit-keras
+* [tensorboard_plugin_profile](https://www.tensorflow.org/guide/profiler)
+* [vit-keras](https://github.com/faustomorales/vit-keras)
 * tqdm
 
 # Usage

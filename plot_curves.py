@@ -1,6 +1,9 @@
 import tensorflow as tf
 import numpy as np
 from tensorboard.backend.event_processing.event_accumulator import EventAccumulator
+from tensorboard.backend.event_processing import tag_types
+import matplotlib as mpl
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 import argparse
 
@@ -17,7 +20,10 @@ def read_data_from_tfboard_logs(path, x_tag, y_tag):
     Returns:
         x, y: numpy arrays
     """
-    event_acc = EventAccumulator(path)
+    size_guidance = {
+        tag_types.TENSORS: 20,
+    }
+    event_acc = EventAccumulator(path, size_guidance=size_guidance)
     event_acc.Reload()
     event_list = event_acc.Tensors(y_tag)
     if x_tag == 'wall_time':

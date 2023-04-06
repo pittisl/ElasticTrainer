@@ -1,6 +1,9 @@
 import numpy as np
+import matplotlib as mpl
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 import argparse
+from utils import my_bool
 
 
 def plot_different_models(
@@ -171,7 +174,7 @@ def main():
     parser.add_argument('--path_to_bn_plus_bias_mobilenetv2', type=str, default='TBD')
     parser.add_argument('--figure_id', type=int, default=1, help='figure id')
     parser.add_argument('--figure_name', type=str, default='TBD', help='figure name')
-    parser.add_argument('--ego', type=str, default='False', help='Whether to exclude baseline schemes')
+    parser.add_argument('--ego', type=my_bool, default=False, help='Whether to exclude baseline schemes')
     
     args = parser.parse_args()
     

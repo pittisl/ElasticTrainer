@@ -1,7 +1,8 @@
 from utils import (port_datasets, 
                    port_pretrained_models, 
                    RepeatTimer, record_once, 
-                   sig_stop_handler)
+                   sig_stop_handler,
+                   my_bool)
 from train import (full_training, 
                    traditional_tl_training, 
                    bn_plus_bias_training, 
@@ -28,8 +29,8 @@ parser.add_argument('--learning_rate', type=float, default=1e-4, help='learning 
 parser.add_argument('--weight_decay', type=float, default=5e-4, help='weight decay for sgd')
 parser.add_argument('--num_epochs', type=int, default=12, help='number of training epochs')
 parser.add_argument('--run_name', type=str, default='auto', help='whether to use auto-generated (auto) or user-defined run name')
-parser.add_argument('--save_model', type=bool, default=False, help='whether to save the trained model')
-parser.add_argument('--save_txt', type=bool, default=False, help='whether to save the final accuracy and wall time into txt')
+parser.add_argument('--save_model', type=my_bool, default=False, help='whether to save the trained model')
+parser.add_argument('--save_txt', type=my_bool, default=False, help='whether to save the final accuracy and wall time into txt')
 
 parser.add_argument('--interval', type=float, default=4, help='interval (in epoch) of tensor importance evaluation')
 parser.add_argument('--rho', type=float, default=0.533, help='speedup ratio')

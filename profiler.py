@@ -1,6 +1,8 @@
 from utils import port_pretrained_models
 import tensorflow as tf
 import numpy as np
+import matplotlib as mpl
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 from tensorboard_plugin_profile.protobuf import tf_stats_pb2 #, kernel_stats_pb2
 from tensorboard_plugin_profile.convert.tf_stats_proto_to_gviz import generate_chart_table

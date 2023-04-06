@@ -9,6 +9,10 @@ from subprocess import Popen, PIPE
 from threading import Timer
 import sys
 
+
+def my_bool(s):
+    return s != 'False'
+
 class RepeatTimer(Timer):
     def run(self):
         while not self.finished.wait(self.interval):

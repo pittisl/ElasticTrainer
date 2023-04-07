@@ -1,9 +1,9 @@
 # Introduction
 This code repository stores program implementation for the accepted MobiSys 2023 paper "ElasticTrainer: Speeding Up On-Device Training with Runtime Elastic Tensor Selection". According to our paper, the code is intended to be run on embedded devices (e.g., Raspberry Pi and Nvidia Jetson TX2), but also applicable to workstations.
 
-<p float="left">
-  <img src="intro_images/comparison.PNG" width="250" />
-  <img src="intro_images/overview.PNG" width="415" /> 
+
+<p align="center">
+  <img width="600" height="250" src="intro_images/overview.PNG">
 </p>
 
 If you are looking for **the core of our implementation**, we suggest you take a look at the following:

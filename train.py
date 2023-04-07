@@ -261,7 +261,7 @@ def bn_plus_bias_training(
     best_validation_acc = best_validation_acc.numpy() * 100
     total_time_0 /= 3600
     print('===============================================')
-    print('Training Type: Full training')
+    print('Training Type: BN+Bias')
     print(f"Accuracy (%): {best_validation_acc:.2f}")
     print(f"Time (h): {total_time_0:.2f}")
     print('===============================================')
@@ -396,7 +396,7 @@ def traditional_tl_training(
     best_validation_acc = best_validation_acc.numpy() * 100
     total_time_0 /= 3600
     print('===============================================')
-    print('Training Type: Full training')
+    print('Training Type: Traditional TL')
     print(f"Accuracy (%): {best_validation_acc:.2f}")
     print(f"Time (h): {total_time_0:.2f}")
     print('===============================================')
@@ -581,7 +581,7 @@ def elastic_training(
     best_validation_acc = best_validation_acc.numpy() * 100
     total_time_0 /= 3600
     print('===============================================')
-    print('Training Type: Full training')
+    print('Training Type: ElasticTrainer')
     print(f"Accuracy (%): {best_validation_acc:.2f}")
     print(f"Time (h): {total_time_0:.2f}")
     print('===============================================')
@@ -741,7 +741,7 @@ def elastic_training_weight_magnitude(
     best_validation_acc = best_validation_acc.numpy() * 100
     total_time_0 /= 3600
     print('===============================================')
-    print('Training Type: Full training')
+    print('Training Type: ElasticTrainer (W)')
     print(f"Accuracy (%): {best_validation_acc:.2f}")
     print(f"Time (h): {total_time_0:.2f}")
     print('===============================================')
@@ -914,7 +914,7 @@ def elastic_training_grad_magnitude(
     best_validation_acc = best_validation_acc.numpy() * 100
     total_time_0 /= 3600
     print('===============================================')
-    print('Training Type: Full training')
+    print('Training Type: ElasticTrainer (G)')
     print(f"Accuracy (%): {best_validation_acc:.2f}")
     print(f"Time (h): {total_time_0:.2f}")
     print('===============================================')
@@ -1045,7 +1045,7 @@ def prune_training(
     best_validation_acc = best_validation_acc.numpy() * 100
     total_time_0 /= 3600
     print('===============================================')
-    print('Training Type: Full training')
+    print('Training Type: PruneTrain')
     print(f"Accuracy (%): {best_validation_acc:.2f}")
     print(f"Time (h): {total_time_0:.2f}")
     print('===============================================')

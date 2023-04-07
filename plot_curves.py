@@ -6,6 +6,7 @@ import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as plt
 import argparse
+from utils import my_bool
 
 
 def read_data_from_tfboard_logs(path, x_tag, y_tag):
@@ -135,7 +136,7 @@ def main():
     parser.add_argument('--x_tag', type=str, default='wall_time', help="one from ['wall_time', 'step']")
     parser.add_argument('--y_tag', type=str, default='accuracy', help="['train/accuracy', 'train/classification_loss',\
         'train/learnig_rate', 'test/classification_loss', 'test/accuracy']")
-    parser.add_argument('--single', type=bool, default=True, help='batch size used to run during profiling')
+    parser.add_argument('--single', type=my_bool, default=True, help='whether to exclude baseline schemes')
     parser.add_argument('--elastic_trainer_path', type=str, default='TBD', help='path to log of elastic_trainer')
     parser.add_argument('--full_training_path', type=str, default='TBD', help='path to log of full_training')
     parser.add_argument('--traditional_tl_path', type=str, default='TBD', help='path to log of elastic_trainer')

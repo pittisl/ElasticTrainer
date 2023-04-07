@@ -121,7 +121,7 @@ def plot_different_models_ego(
                                             'weight': 'bold',
                                             'size': 16,
                                             })
-        plt.legend(['ElasticTrainer', 'Full training', 'Traditional TL', 'BN+Bias'])
+        # plt.legend(['ElasticTrainer', 'Full training', 'Traditional TL', 'BN+Bias'])
         plt.xticks(fontsize=16)
         plt.yticks(fontsize=16)
         

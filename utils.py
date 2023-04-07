@@ -8,6 +8,7 @@ import gc
 from subprocess import Popen, PIPE
 from threading import Timer
 import sys
+import os
 
 
 def my_bool(s):
@@ -49,8 +50,9 @@ def record_once():
 
 def sig_stop_handler(sig, frame):
     global timer
-    timer.cancel()
-    sys.exit(0)
+    # timer.cancel()
+    # sys.exit(0)
+    os.abort()
 
 # signal.signal(signal.SIGINT, sig_stop_handler)
 # signal.signal(signal.SIGTERM, sig_stop_handler)

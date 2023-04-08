@@ -37,5 +37,5 @@ python3 plot_bars_v2.py --path_to_elastic_trainer_resnet50 resnet50_ElasticTrain
                         --path_to_elastic_trainer_vgg16 vgg16_ElasticTrainer \
                         --path_to_elastic_trainer_mobilenetv2 mobilenetv2_ElasticTrainer \
                         --figure_id 1 \
-                        --figure_name Figure_19_ego.pdf \
+                        --figure_name Figure_19_ego \
                         --ego True

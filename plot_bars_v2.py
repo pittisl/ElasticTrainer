@@ -61,7 +61,7 @@ def plot_different_models(
         
     subcategorybar1(X, [et, ft, ttl, bpb])
     # plt.show()
-    plt.savefig('accuracy_' + figure_name, format="pdf", bbox_inches="tight")
+    plt.savefig(figure_name + '_accuracy.pdf', format="pdf", bbox_inches="tight")
     
     #########
     
@@ -90,7 +90,7 @@ def plot_different_models(
         
     subcategorybar2(X, [et, ft, ttl, bpb])
     # plt.show()
-    plt.savefig('time_' + figure_name, format="pdf", bbox_inches="tight")
+    plt.savefig(figure_name + '_time.pdf', format="pdf", bbox_inches="tight")
 
 
 def plot_different_models_ego(
@@ -127,7 +127,7 @@ def plot_different_models_ego(
         
     subcategorybar1(X, [et])
     # plt.show()
-    plt.savefig('accuracy_' + figure_name, format="pdf", bbox_inches="tight")
+    plt.savefig(figure_name + '_accuracy.pdf', format="pdf", bbox_inches="tight")
     
     ##########
     et = [et_r50[0], et_v16[0], et_mv2[0]]
@@ -152,7 +152,7 @@ def plot_different_models_ego(
         
     subcategorybar2(X, [et])
     # plt.show()
-    plt.savefig('time_' + figure_name, format="pdf", bbox_inches="tight")
+    plt.savefig(figure_name + '_time.pdf', format="pdf", bbox_inches="tight")
     
     
 def main():
@@ -203,6 +203,14 @@ def main():
             'logs/' + path_to_elastic_trainer_resnet50 + '.txt',
             'logs/' + path_to_elastic_trainer_vgg16 + '.txt',
             'logs/' + path_to_elastic_trainer_mobilenetv2 + '.txt',
+            figure_id,
+            'figures/' + figure_name,
+        )
+    else:
+        plot_different_models(
+            'logs/' + path_to_elastic_trainer_resnet50 + '.txt',
+            'logs/' + path_to_elastic_trainer_vgg16 + '.txt',
+            'logs/' + path_to_elastic_trainer_mobilenetv2 + '.txt',
             'logs/' + path_to_full_training_resnet50 + '.txt',
             'logs/' + path_to_full_training_vgg16 + '.txt',
             'logs/' + path_to_full_training_mobilenetv2 + '.txt',
@@ -212,14 +220,6 @@ def main():
             'logs/' + path_to_bn_plus_bias_resnet50 + '.txt',
             'logs/' + path_to_bn_plus_bias_vgg16 + '.txt',
             'logs/' + path_to_bn_plus_bias_mobilenetv2 + '.txt',
-            figure_id,
-            'figures/' + figure_name,
-        )
-    else:
-        plot_different_models(
-            'logs/' + path_to_elastic_trainer_resnet50 + '.txt',
-            'logs/' + path_to_elastic_trainer_vgg16 + '.txt',
-            'logs/' + path_to_elastic_trainer_mobilenetv2 + '.txt',
             figure_id,
             'figures/' + figure_name,
         )

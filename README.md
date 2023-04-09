@@ -53,7 +53,7 @@ We first describe how you can prepare the environment that allows you to run our
 ## Preparing Nvidia Jetson TX2
 1. According to our artifact appendix, flash the Jetson using our provided OS image. Insert SSD.
 2. Login the system where both username and password are `nvidia`. 
-3. Run the following commands to finishs preparation:
+3. Run the following commands to finish preparation:
 ```
 sudo su -
 cd ~/src/ElasticTrainer

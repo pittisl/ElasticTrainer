@@ -8,6 +8,10 @@ If you are looking for **the core of our implementation**, we suggest you take a
 
 **We are still finalizing our code and docs. Please stay tuned for camera-ready release of our paper**.
 
+# License
+
+Our source code is released under MIT License.
+
 # Requirements
 * Python 3.7+
 * tensorflow 2

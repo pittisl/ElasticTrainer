@@ -6,7 +6,7 @@ If you are looking for **the core of our implementation**, we suggest you take a
 * Tensor Importance Evaluator -- `elastic_training` in `train.py`
 * Tensor Selector by Dynamic Programming -- `selection_solver_DP.py`.
 
-**We are still finalizing our code. Please also stay tuned for camera-ready release of our paper**.
+**We are still finalizing our code and docs. Please stay tuned for camera-ready release of our paper**.
 
 # Requirements
 * Python 3.7+
@@ -18,7 +18,7 @@ If you are looking for **the core of our implementation**, we suggest you take a
 * tqdm
 
 # General Usage
-Pick up NN models and datasets to run. Use `python main.py --help` and `python profiler.py --help` to see configurable parameters.
+Select NN models and datasets to run. Use `python main.py --help` and `python profiler.py --help` to see configurable parameters.
 
 Supported NN architectures:
 * ResNet50 -- `resnet50`
@@ -46,46 +46,80 @@ python main.py --model_name resnet50 \
                --rho 0.5
 ```
 # Artifact Evaluation
-We provide experimental workflows that allow people to reproduce our main results (including baselines' results) in the paper. However, running all the experiments could take extremely long time (~800 hours), and thus we list each experiment with its estimated running time for users to choose based on their time budget. After you finish running each script, the figure will be automatically generated under `figures/`. For Nvidia Jetson TX2, we run experiments with its text-only interface, and to view the figures, you will need to switch back to the graphic interface.
+We provide experimental workflows that allow people to reproduce our main results (including baselines' results) in the paper. However, running all the experiments could take extremely long time (~800 hours), and thus we mark each experiment with its estimated execution time for users to choose based on their time budget. After you finish running each script, the figure will be automatically generated under `figures/`. For Nvidia Jetson TX2, we run experiments with its text-only interface, and to view the figures, you will need to switch back to the graphic interface.
 
-## Figure 15(a)(d) - A minimal reproduction (~10 hours)
+We first describe how you can prepare the environment that allows you to run our experiments, and then we list command lines to reproduce every figure in our main results.
+
+## Preparing Nvidia Jetson TX2
+1. According to our artifact appendix, flash the Jetson using our provided OS image. Insert SSD.
+2. Login the system where both username and password are `nvidia`. 
+3. Run the following commands to finishs preparation:
+```
+sudo su -
+cd ~/src/ElasticTrainer
+chmod +x *.sh
+```
+
+## Preparing Raspberry Pi 4B
+1. Flash the Raspberry Pi using our provided OS image.
+2. Open a terminal and run the following commands to finish preparation:
+```
+cd ~/src/ElasticTrainer
+. ../kai_stl_code/venv/bin/activate
+chmod +x *.sh
+```
+
+## Figure 15(a)(d) - A minimal reproduction of main results (~10 hours)
 On Nvidia Jetson TX2:
 ```
-bash run_figure15ad.sh
+./run_figure15ad.sh
 ```
 ## Figure 15 from (a) to (f) (~33 hours)
 On Nvidia Jetson TX2:
 ```
-bash run_figure15.sh
+./run_figure15.sh
 ```
 Alternatively, if you want to exclude baseline schemes, run the following (~6.5 hours):
 ```
-bash run_figure15_ego.sh
+./run_figure15_ego.sh
 ```
 ## Figure 16 from (a) to (d) (~221 hours)
 On Raspberry Pi 4B:
 ```
-bash run_figure16.sh
+./run_figure16.sh
 ```
 Alternatively, if you want to exclude baseline schemes, run the following (~52 hours):
 ```
-bash run_figure16_ego.sh
+./run_figure16_ego.sh
 ```
 ## Figure 17 (a)(c) (~15+190 hours)
 Run the following command on both Nvidia Jetson TX2 (~15 hours) and Raspberry Pi 4B (~190 hours):
 ```
-bash run_figure17ac.sh
+./run_figure17ac.sh
 ```
 Alternatively, if you want to exclude baseline schemes, run the following command on both Nvidia Jetson TX2 (~9 hours) and Raspberry Pi 4B (~85 hours):
 ```
-bash run_figure17ac_ego.sh
+./run_figure17ac_ego.sh
 ```
 ## Figure 19 from (a) to (d) (~20+310 hours)
 Run the following command on both Nvidia Jetson TX2 (~20 hours) and Raspberry Pi 4B (~310 hours):
 ```
-bash run_figure19.sh
+./run_figure19.sh
 ```
 Alternatively, if you want to exclude baseline schemes, run the following command on both Nvidia Jetson TX2 (~3.5 hours) and Raspberry Pi 4B (~50 hours):
 ```
-bash run_figure19_ego.sh
+./run_figure19_ego.sh
 ```
+
+## Checking Results
+All the experiment results should be generated under `figures/`. On Pi, directly click them to view. On Jetson, to check experiments results, you will need to switch to graphic mode:
+
+```
+sudo systemctl start graphical.target
+``` 
+In graphic mode, open a terminal, gain root privilege, and navigate to our code directory:
+```
+sudo su -
+cd ~/src/ElasticTrainer
+```
+ All the figures are stored under `figures/`. Use `ls` command to check their file names. Use `evince` command to view the figures, for example, `evince xxx.pdf`. To go back to text-only mode, simply reboot the system.

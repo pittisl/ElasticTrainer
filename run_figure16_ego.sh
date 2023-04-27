@@ -27,6 +27,11 @@ python3 plot_curves.py --x_tag wall_time \
 python3 profiler.py --model_name resnet50 \
                     --num_classes 37
 
+python3 main.py --model_name resnet50 \
+                --dataset_name oxford_iiit_pet \
+                --train_type elastic_training \
+                --run_name PET37_ElasticTrainer
+
 python3 plot_curves.py --x_tag wall_time \
                        --y_tag test/accuracy \
                        --single True \

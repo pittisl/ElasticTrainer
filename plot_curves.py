@@ -64,7 +64,7 @@ def plot_single_curve(
         'size': 16,
     }
     plt.figure(figure_id)
-    plt.plot(et_x, et_y, "ks-", label="ElaticTrainer",  linewidth=3)
+    plt.plot(et_x, et_y, "ks-", label="ElasticTrainer",  linewidth=3)
     plt.xlabel('Wall-clock time (h)', fontdict=font)
     if 'accuracy' in y_tag:
         plt.ylabel('Accuracy (%)', fontdict=font)
@@ -114,7 +114,7 @@ def plot_multiple_curves(
     }
     
     plt.figure(figure_id)
-    plt.plot(et_x, et_y, "ks-", label="ElaticTrainer",  linewidth=3)
+    plt.plot(et_x, et_y, "ks-", label="ElasticTrainer",  linewidth=3)
     plt.plot(ft_x, ft_y, "rs-", label="Full Training", linewidth=3)
     plt.plot(ttl_x, ttl_y, "bs-", label="Traditional TL", linewidth=3)
     plt.plot(bpb_x, bpb_y, "gs-", label="BN+Bias", linewidth=3)

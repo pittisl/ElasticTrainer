@@ -1,5 +1,5 @@
 # This script is adapted from https://github.com/faustomorales/vit-keras
-# The implementation of TranformerBlock is refined so that the tensor ordering is consistent
+# The implementation of TransformerBlock is refined so that the tensor ordering is consistent
 # with operation ordering.
 import tensorflow as tf
 import tensorflow_addons as tfa

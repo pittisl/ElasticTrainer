@@ -49,7 +49,7 @@ python main.py --model_name resnet50 \
                --train_type elastic_training \
                --rho 0.5
 ```
-Please note the totol wall training time should exclude validation time.
+Please note that the wall training time should exclude validation time.
 
 ## FAQs
 **Q1: Why tensorflow, not pytorch?**

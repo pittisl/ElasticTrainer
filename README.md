@@ -4,9 +4,9 @@
 This code repository stores program implementation for our MobiSys 2023 paper "ElasticTrainer: Speeding Up On-Device Training with Runtime Elastic Tensor Selection". **ElasticTrainer can speed up on-device NN training by adaptively selecting the minimal set of trainable parameters on the fly without noticeable accuracy loss**. According to our paper, although the code is intended to be run on embedded devices (e.g., Raspberry Pi and Nvidia Jetson TX2), it is also applicable to workstations.
 
 Looking for the core of our implementation? We suggest you take a look at the following:
-* Tensor Timing Profiler -- `profiler.py`
-* Tensor Importance Evaluator -- `elastic_training` in `train.py`
-* Tensor Selector by Dynamic Programming -- `selection_solver_DP.py`.
+* Tensor Timing Profiler -- [profiler.py](https://github.com/HelloKevin07/ElasticTrainer/blob/main/profiler.py)
+* Tensor Importance Evaluator -- [elastic_training](https://github.com/HelloKevin07/ElasticTrainer/blob/main/train.py#L407) in [train.py](https://github.com/HelloKevin07/ElasticTrainer/blob/main/train.py)
+* Tensor Selector by Dynamic Programming -- [selection_solver_DP.py](https://github.com/HelloKevin07/ElasticTrainer/blob/main/selection_solver_DP.py).
 
 ## License
 
@@ -42,13 +42,14 @@ Below shows an example of training ResNet50 on CUB-200 dataset with our ElasticT
 python profiler.py --model_name resnet50 \
                    --num_classes 200
 ```
-Then start training your model on the device with speedup ratio of 0.5 (i.e., 2x faster):
+Then start training your model on the device with speedup ratio of 0.5 (i.e., 2x faster in wall time):
 ```
 python main.py --model_name resnet50 \
                --dataset_name caltech_birds2011 \
                --train_type elastic_training \
                --rho 0.5
 ```
+Please note the totol wall training time should exclude validation time.
 
 ## FAQs
 **Q1: Why tensorflow, not pytorch?**

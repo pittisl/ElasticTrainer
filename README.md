@@ -56,11 +56,15 @@ Please note the totol wall training time should exclude validation time.
 
 We are aware that pytorch is a dominant NN library in AI research community. However, to our best knowledge, pytorch's profiler is incapable of presenting structured timing information of ops in backward pass. Check [link1](https://github.com/pytorch/kineto/issues/580) and [link2](https://github.com/pytorch/kineto/pull/372) for details. In comparison, tensorflow profiler provides well-structured and human-readable timing information for us to parse and group, but tensorflow's profiler only works for tensorflow models and codes.
 
-**Q2: Why are some tensors' timings not counted in our Tensor Timing Profiler?**
+**Q2: How are you able to select a subset of parameters to train?**
+
+In tensorflow, `model.trainable_weights` gives you a list of all the trainable parameters. You can extract wanted ones into another list, say `var_list`. Then pass `var_list` to the optimizer, i.e., `optimizer.apply_gradients(zip(gradients, var_list))`. This process can be done at runtime but may need to manually free old graphs for memory limited devices.
+
+**Q3: Why are some tensors' timings not counted in our Tensor Timing Profiler?**
 
 Because we cannot find related timings for these tensors from tensorflow's profiling results. That is, even for tensorflow profiler, it may fail to capture a few NN ops during profiling for no reason. We have no solution for that. One workaround can be using known op's timings to estimate missing op's timings based on their FLOPs relationships.
 
-**Q3: What's the meaning of `(rho - 1/3)*3/2` in `elastic_training` in `train.py`?**
+**Q4: What's the meaning of `(rho - 1/3)*3/2` in `elastic_training` in `train.py`?**
 
 It converts training speedup to backward speedup based on the 2:1 FLOPs relationship between backward pass and forward pass. We did so to bypass profiling the forward time. Please note this is only an approximation, and we did this due to tight schedule when we rushing for this paper. To ensure precision, we highly recommend you do profile the forward time `T_fp` and backward time and `T_bp`, and use `rho * (1 + T_fp/T_bp) - T_fp/T_bp` to convert to backward speedup.
 

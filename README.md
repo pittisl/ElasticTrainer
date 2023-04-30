@@ -54,7 +54,7 @@ Please note the totol wall training time should exclude validation time.
 ## FAQs
 **Q1: Why tensorflow, not pytorch?**
 
-We are aware that pytorch is a dominant NN library in AI research community. However, to our best knowledge, pytorch's profiler is incapable of presenting structured timing information of ops in backward pass. Check [link1](https://github.com/pytorch/kineto/issues/580) and [link2](https://github.com/pytorch/kineto/pull/372) for details. In comparison, tensorflow profiler provides well-structured and human-readable timing information for us to parse and group, and tensorflow's profiler only works for tensorflow models and codes.
+We are aware that pytorch is a dominant NN library in AI research community. However, to our best knowledge, pytorch's profiler is incapable of presenting structured timing information of ops in backward pass. Check [link1](https://github.com/pytorch/kineto/issues/580) and [link2](https://github.com/pytorch/kineto/pull/372) for details. In comparison, tensorflow profiler provides well-structured and human-readable timing information for us to parse and group, but tensorflow's profiler only works for tensorflow models and codes.
 
 **Q2: Why are some tensors' timings not counted in our Tensor Timing Profiler?**
 

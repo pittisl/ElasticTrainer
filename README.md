@@ -61,7 +61,7 @@ Because we cannot find related timings for these tensors from tensorflow's profi
 
 **Q3: What's the meaning of `(rho - 1/3)*3/2` in `elastic_training` in `train.py`?**
 
-It converts training speedup to backward speedup based on the 2:1 FLOPs relationship between backward pass and forward pass. We did so to bypass profiling the forward time. Please note this is only an approximation, and we did this due to tight schedule when we rushing for this paper. To ensure precision, we highly recommend you do profile the forward time `T_fp` and backward time and `T_bp`, and use `rho * (1 + T_fp/T_bp) + T_fp/T_bp` to convert to backward speedup.
+It converts training speedup to backward speedup based on the 2:1 FLOPs relationship between backward pass and forward pass. We did so to bypass profiling the forward time. Please note this is only an approximation, and we did this due to tight schedule when we rushing for this paper. To ensure precision, we highly recommend you do profile the forward time `T_fp` and backward time and `T_bp`, and use `rho * (1 + T_fp/T_bp) - T_fp/T_bp` to convert to backward speedup.
 
 ## Reproducing Paper Results
 We provide experimental workflows that allow people to reproduce our main results in the paper. However, running all the experiments could take extremely long time (~800 hours), and thus we mark each experiment with its estimated execution time for users to choose based on their time budget. After you finish running each script, the figure will be automatically generated under `figures/`. For Nvidia Jetson TX2, we run experiments with its text-only interface, and to view the figures, you will need to switch back to the graphic interface.

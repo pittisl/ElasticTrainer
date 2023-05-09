@@ -56,7 +56,7 @@ Please note that the wall training time should exclude validation time.
 ## FAQs
 **Q1: Why tensorflow, not pytorch?**
 
-We are aware that pytorch is a dominant NN library in AI research community. However, to the best of our knowledge, pytorch's profiler is incapable of presenting structured timing information of ops in backward pass, and some of the provided measurements are not even reliable. Check [link1](https://github.com/pytorch/kineto/issues/580), [link2](https://github.com/pytorch/kineto/pull/372), and [link3](https://github.com/pytorch/pytorch/issues/30711) for details. In comparison, tensorflow profiler provides accurate, well-structured, and human-readable timing information for us to parse and group, but tensorflow's profiler only works for tensorflow models and codes.
+We are aware that pytorch is a dominant NN library in AI research community. However, to the best of our knowledge, pytorch's profiler is incapable of presenting structured timing information of ops in backward pass, and some of the provided measurements are not even reliable. Check [link1](https://github.com/pytorch/kineto/issues/580), [link2](https://github.com/pytorch/kineto/pull/372), and [link3](https://github.com/pytorch/pytorch/issues/30711) for details. In comparison, tensorflow profiler provides accurate, well-structured, and human-readable timing information for us to parse and group, but tensorflow's profiler only works for tensorflow models and codes. If you insist on working with pytorch, I can only suggest you use FLOPs instead of wall-clock time as the tensor timing metric. That means you need to write your own code to derive FLOPs and it basically cannot reflect actual speed-up.
 
 **Q2: How are you able to select a subset of parameters to train?**
 

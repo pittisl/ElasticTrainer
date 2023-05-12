@@ -58,15 +58,33 @@ Please note that the wall training time should exclude validation time.
 
 We are aware that pytorch is a dominant NN library in AI research community. However, to the best of our knowledge, pytorch's profiler is incapable of presenting structured timing information of ops in backward pass, and some of the provided measurements are not even reliable. Check [link1](https://github.com/pytorch/kineto/issues/580), [link2](https://github.com/pytorch/kineto/pull/372), and [link3](https://github.com/pytorch/pytorch/issues/30711) for details. In comparison, tensorflow profiler provides accurate, well-structured, and human-readable timing information for us to parse and group, but tensorflow's profiler only works for tensorflow models and codes. If you insist on working with pytorch, I can only suggest you use FLOPs instead of wall-clock time as the tensor timing metric. That means you need to write your own code to derive FLOPs and it basically cannot reflect actual speed-up.
 
-**Q2: How are you able to select a subset of parameters to train?**
+**Q2: ElasticTrainer VS. Parameter-Efficient Fine-Tuning (PEFT) for recent Large Language Models (LLMs)?**
 
-In tensorflow, `model.trainable_weights` gives you a list of all the trainable parameters. You can extract wanted ones into another list, say `var_list`. Then pass `var_list` to the optimizer, i.e., `optimizer.apply_gradients(zip(gradients, var_list))`. This process can be done at runtime but may need to manually free old graphs for memory limited devices.
+If you are an NLP expert, you may know there are many existing PEFT works in NLP area, such as [prompt tuning](https://arxiv.org/abs/2104.08691), [prefix tuning](https://arxiv.org/abs/2101.00190), and [LoRA](https://arxiv.org/abs/2106.09685). These works focus on minimizing the number trainable parameters (usually to <1%) because they speculate that variance rather than bias is a dominant factor in model generalization. 
 
-**Q3: Why are some tensors' timings not counted in our Tensor Timing Profiler?**
+However, **solely minimizing the number of trainable parameters doesn't gurantee wall-time speedup**. For example, prompt tuning still requires error gradients to propagate through the entire network, which leads to very limited wall-time speedup. On the other hand, nobody can promise variance is always a dominant factor in model generalzation. Unless you want to use super super large pretrained LLMs (e.g., GPT-3) with stunning zero-shot adaptability, applying PEFT to most medium-sized pretrained models would kill a lot of representational power for **complex generative tasks** (e.g., text summarization and math Q&A) and lose much accuracy.
+
+**Q3: How are you able to select a subset of parameters to train?**
+
+In tensorflow, `model.trainable_weights` gives you a list of all the trainable parameters. You can extract wanted ones into another list, say `var_list`. Then pass `var_list` to the optimizer, i.e., `optimizer.apply_gradients(zip(gradients, var_list))`. This process can be done at runtime but may cause frequent retracing in tensorflow. So you may need to manually free old graphs to avoid increasing memory usage, which is what we implemented originally. I later realized that maybe a better way to suppress retracing is to configure the [tf.function](https://www.tensorflow.org/api_docs/python/tf/function) decorator:
+
+```python
+@tf.function(
+    experimental_relax_shapes=True,
+    experimental_follow_type_hints=True,
+)
+def train_step(...)
+
+# alternatively
+@tf.function(reduce_retracing=True)
+def train_step(...)
+```
+
+**Q4: Why are some tensors' timings not counted in our Tensor Timing Profiler?**
 
 Because we cannot find related timings for these tensors from tensorflow's profiling results. That is, even for tensorflow profiler, it may fail to capture a few NN ops during profiling for no reason. We have no solution for that. One workaround can be using known op's timings to estimate missing op's timings based on their FLOPs relationships.
 
-**Q4: What's the meaning of `(rho - 1/3)*3/2` in `elastic_training` in `train.py`?**
+**Q5: What's the meaning of `(rho - 1/3)*3/2` in `elastic_training` in `train.py`?**
 
 It converts training speedup to backward speedup based on the 2:1 FLOPs relationship between backward pass and forward pass. We did so to bypass profiling the forward time. Please note this is only an approximation, and we did this due to tight schedule when we rushing for this paper. To ensure precision, we highly recommend you do profile the forward time `T_fp` and backward time `T_bp`, and use `rho * (1 + T_fp/T_bp) - T_fp/T_bp` to for such conversion.
 

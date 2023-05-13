@@ -1,7 +1,9 @@
 # ElasticTrainer: Speeding Up On-Device Training with Runtime Elastic Tensor Selection (MobiSys'23)
 
 ## Introduction
-This is the official code repository for our MobiSys 2023 paper "ElasticTrainer: Speeding Up On-Device Training with Runtime Elastic Tensor Selection". ElasticTrainer can speed up on-device NN training by ***adaptively training the minimal set of important parameters on the fly*** :rocket:, with user-defined speedup and without noticeable accuracy loss. According to our paper, the code is intended to be run on embedded devices (e.g., Raspberry Pi and Nvidia Jetson TX2), but it is also applicable to stronger platforms such as workstations.
+This is the official code repository for our MobiSys 2023 paper "ElasticTrainer: Speeding Up On-Device Training with Runtime Elastic Tensor Selection". ElasticTrainer can speed up on-device NN training by ***adaptively training the minimal set of important parameters on the fly*** :rocket:, with user-defined speedup and without noticeable accuracy loss. According to our paper, the code is intended to be run on embedded devices (e.g., Raspberry Pi and Nvidia Jetson TX2), but it is also applicable to stronger platforms such as workstations. 
+
+:bell: **Please stay tuned for our camera-ready paper and artifact appendix release during the MobiSys 2023 conference!**
 
 :mag_right: Looking for the core of our implementation? We suggest you take a look at the following:
 * Tensor Timing Profiler -- [profiler.py](https://github.com/HelloKevin07/ElasticTrainer/blob/main/profiler.py)
@@ -91,7 +93,7 @@ Because we cannot find related timings for these tensors from tensorflow's profi
 It converts training speedup to backward speedup based on the 2:1 FLOPs relationship between backward pass and forward pass. We did so to bypass profiling the forward time. Please note this is only an approximation, and we did this due to tight schedule when we rushing for this paper. To ensure precision, we highly recommend you do profile the forward time `T_fp` and backward time `T_bp`, and use `rho * (1 + T_fp/T_bp) - T_fp/T_bp` to for such conversion.
 
 ## Reproducing Paper Results
-Please download our artifacts on Zenodo [link1](https://doi.org/10.5281/zenodo.7812218) and [link2](https://doi.org/10.5281/zenodo.7812233), and follow the detailed instructions in our artifact [appendix](docs/MobiSys23_ElasticTrainer_Appendix.pdf).
+Please download our artifacts on Zenodo [link1](https://doi.org/10.5281/zenodo.7812218) and [link2](https://doi.org/10.5281/zenodo.7812233), and follow the detailed instructions in our artifact appendix.
 We provide experimental workflows that allow people to reproduce our main results in the paper. However, running all the experiments could take extremely long time (~800 hours), and thus we mark each experiment with its estimated execution time for users to choose based on their time budget. After you finish running each script, the figure will be automatically generated under `figures/`. For Nvidia Jetson TX2, we run experiments with its text-only interface, and to view the figures, you will need to switch back to the graphic interface.
 
 We first describe how you can prepare the environment that allows you to run our experiments, and then we list command lines to reproduce every figure in our main results.

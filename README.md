@@ -94,7 +94,7 @@ It converts training speedup to backward speedup based on the 2:1 FLOPs relation
 
 **Q6: Why is `rho` multiplied by `disco` in `elastic_training` in `train.py`**
 
-`disco`, which is obtained [here](https://github.com/HelloKevin07/ElasticTrainer/blob/c9e53006f0ad64ca8392130b169952ff3c1cc57b/train.py#LL439C5-L439C72), is a heuristic factor that scales the `rho` a bit, to ensure the desired speedup can be achieved even if `t_dy` and `t_dw` lose much resolution after downscaling. The downside of `disco` is that sometimes it just becomes too small, and suppress too much of the parameter selection. In that case, you can feel free to try removing this factor.
+`disco`, which is obtained [here](https://github.com/HelloKevin07/ElasticTrainer/blob/c9e53006f0ad64ca8392130b169952ff3c1cc57b/train.py#LL439C5-L439C72), is a heuristic factor that scales the `rho` a bit, to ensure the desired speedup can be achieved even if `t_dy` and `t_dw` lose much resolution after downscaling. The downside of `disco` is that sometimes it just becomes too small, and suppresses too much of the parameter selection. In that case, you can feel free to try removing this factor.
 
 ## Reproducing Paper Results
 Please download our artifacts on Zenodo [link1](https://doi.org/10.5281/zenodo.7812218) and [link2](https://doi.org/10.5281/zenodo.7812233), and follow the detailed instructions in our artifact appendix.

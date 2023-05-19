@@ -92,6 +92,10 @@ Because we cannot find related timings for these tensors from tensorflow's profi
 
 It converts training speedup to backward speedup based on the 2:1 FLOPs relationship between backward pass and forward pass. We did so to bypass profiling the forward time. Please note this is only an approximation, and we did this due to tight schedule when we rushing for this paper. To ensure precision, we highly recommend you do profile the forward time `T_fp` and backward time `T_bp`, and use `rho * (1 + T_fp/T_bp) - T_fp/T_bp` to for such conversion.
 
+**Q6: Why is `rho` multiplied by `disco` in `elastic_training` in `train.py`**
+
+`disco`, which is obtained [here](https://github.com/HelloKevin07/ElasticTrainer/blob/c9e53006f0ad64ca8392130b169952ff3c1cc57b/train.py#LL439C5-L439C72), is a heuristic factor that scales the `rho` a bit, to ensure the desired speedup can be achieved even if `t_dy` and `t_dw` lose much resolution after downscaling. The downside of `disco` is that sometimes it just becomes too small, and suppress too much of the parameter selection. In that case, you can feel free to try removing this factor.
+
 ## Reproducing Paper Results
 Please download our artifacts on Zenodo [link1](https://doi.org/10.5281/zenodo.7812218) and [link2](https://doi.org/10.5281/zenodo.7812233), and follow the detailed instructions in our artifact appendix.
 We provide experimental workflows that allow people to reproduce our main results in the paper. However, running all the experiments could take extremely long time (~800 hours), and thus we mark each experiment with its estimated execution time for users to choose based on their time budget. After you finish running each script, the figure will be automatically generated under `figures/`. For Nvidia Jetson TX2, we run experiments with its text-only interface, and to view the figures, you will need to switch back to the graphic interface.

@@ -3,8 +3,6 @@
 ## Introduction
 This is the official code repository for our MobiSys 2023 paper "ElasticTrainer: Speeding Up On-Device Training with Runtime Elastic Tensor Selection". ElasticTrainer can speed up on-device NN training by ***adaptively training the minimal set of important parameters on the fly*** :rocket:, with user-defined speedup and without noticeable accuracy loss. According to our paper, the code is intended to be run on embedded devices (e.g., Raspberry Pi and Nvidia Jetson TX2), but it is also applicable to stronger platforms such as workstations. 
 
-:bell: **Please stay tuned for our camera-ready paper and artifact appendix release during the MobiSys 2023 conference!**
-
 :mag_right: Looking for the core of our implementation? We suggest you take a look at the following:
 * Tensor Timing Profiler -- [profiler.py](https://github.com/HelloKevin07/ElasticTrainer/blob/main/profiler.py)
 * Tensor Importance Evaluator -- [elastic_training](https://github.com/HelloKevin07/ElasticTrainer/blob/main/train.py#L407) in [train.py](https://github.com/HelloKevin07/ElasticTrainer/blob/main/train.py)
@@ -97,7 +95,7 @@ It converts training speedup to backward speedup based on the 2:1 FLOPs relation
 `disco`, which is obtained [here](https://github.com/HelloKevin07/ElasticTrainer/blob/c9e53006f0ad64ca8392130b169952ff3c1cc57b/train.py#LL439C5-L439C72), is a heuristic factor that scales the `rho` a bit, to ensure the desired speedup can be achieved even if `t_dy` and `t_dw` lose much resolution after downscaling. The downside of `disco` is that sometimes it just becomes too small, and suppresses too much of the parameter selection. In that case, you can feel free to try removing this factor.
 
 ## Reproducing Paper Results
-Please download our artifacts on Zenodo [link1](https://doi.org/10.5281/zenodo.7812218) and [link2](https://doi.org/10.5281/zenodo.7812233), and follow the detailed instructions in our artifact appendix.
+Please download our artifacts on Zenodo [link1](https://doi.org/10.5281/zenodo.7812218) and [link2](https://doi.org/10.5281/zenodo.7812233), and follow the detailed instructions in our [artifact appendix](docs/ElasticTrainer_AE_Appendix.pdf).
 We provide experimental workflows that allow people to reproduce our main results in the paper. However, running all the experiments could take extremely long time (~800 hours), and thus we mark each experiment with its estimated execution time for users to choose based on their time budget. After you finish running each script, the figure will be automatically generated under `figures/`. For Nvidia Jetson TX2, we run experiments with its text-only interface, and to view the figures, you will need to switch back to the graphic interface.
 
 We first describe how you can prepare the environment that allows you to run our experiments, and then we list command lines to reproduce every figure in our main results.

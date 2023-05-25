@@ -8,7 +8,7 @@ This is the official code repository for our MobiSys 2023 paper "ElasticTrainer:
 * Tensor Importance Evaluator -- [elastic_training](https://github.com/HelloKevin07/ElasticTrainer/blob/main/train.py#L407) in [train.py](https://github.com/HelloKevin07/ElasticTrainer/blob/main/train.py)
 * Tensor Selector by Dynamic Programming -- [selection_solver_DP.py](https://github.com/HelloKevin07/ElasticTrainer/blob/main/selection_solver_DP.py).
 
-:chart_with_upwards_trend: Want to reproduce our paper results? Please check instructions [here](https://github.com/HelloKevin07/ElasticTrainer/tree/main#reproducing-paper-results).
+:chart_with_upwards_trend: Want to reproduce our paper results? Please check instructions [here](#reproducing-paper-results).
 
 ## License
 

@@ -21,6 +21,7 @@ Our source code is released under MIT License.
 * tensorflow-addons
 * [tensorboard_plugin_profile](https://www.tensorflow.org/guide/profiler)
 * [vit-keras](https://github.com/faustomorales/vit-keras)
+* matplotlib
 * tqdm
 
 The software versions are platform dependent. In general, installing the most recent versions should work for typical workstations. For Nvidia Jetson TX2 and Raspberry Pi 4B, please check our provided OS images described [here](https://github.com/HelloKevin07/ElasticTrainer#reproducing-paper-results).

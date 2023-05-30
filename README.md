@@ -1,7 +1,7 @@
 # ElasticTrainer: Speeding Up On-Device Training with Runtime Elastic Tensor Selection (MobiSys'23)
 
 ## Introduction
-This is the official code repository for our MobiSys 2023 paper "ElasticTrainer: Speeding Up On-Device Training with Runtime Elastic Tensor Selection". ElasticTrainer can speed up on-device NN training by ***adaptively training the minimal set of important parameters on the fly*** :rocket:, with user-defined speedup and without noticeable accuracy loss. According to our paper, the code is intended to be run on embedded devices (e.g., Raspberry Pi and Nvidia Jetson TX2), but it is also applicable to stronger platforms such as workstations. 
+This is the official code repository for our MobiSys 2023 paper [ElasticTrainer: Speeding Up On-Device Training with Runtime Elastic Tensor Selection](https://hellokevin07.github.io/files/mobisys23-ElasticTrainer.pdf). ElasticTrainer can speed up on-device NN training by ***adaptively training the minimal set of important parameters on the fly*** :rocket:, with user-defined speedup and without noticeable accuracy loss. According to our paper, the code is intended to be run on embedded devices (e.g., Raspberry Pi and Nvidia Jetson TX2), but it is also applicable to stronger platforms such as workstations. 
 
 :mag_right: Looking for the core of our implementation? We suggest you take a look at the following:
 * Tensor Timing Profiler -- [profiler.py](https://github.com/HelloKevin07/ElasticTrainer/blob/main/profiler.py)

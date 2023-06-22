@@ -178,3 +178,14 @@ cd ~/src/ElasticTrainer
 tensorboard --logdir logs
  ```
  Open Chrome/Chromium browser and visit URL http://localhost:6006/. On the right sidebar, make sure you switch from "Step" to "Relative" on "Settings->General".
+
+ ## Citation
+ ```
+@inproceedings{huang2023elastictrainer,
+  title={ElasticTrainer: Speeding Up On-Device Training with Runtime Elastic Tensor Selection},
+  author={Huang, Kai and Yang, Boyuan and Gao, Wei},
+  booktitle={Proceedings of the 21st Annual International Conference on Mobile Systems, Applications and Services},
+  pages={56--69},
+  year={2023}
+}
+ ```

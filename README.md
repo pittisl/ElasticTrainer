@@ -63,6 +63,8 @@ We are aware that pytorch is a dominant NN library in AI research community. How
 
 **Q2: ElasticTrainer VS. Parameter-Efficient Fine-Tuning (PEFT) for recent Large Language Models (LLMs)?**
 
+* We have extended ElasticTrainer to [GreenTrainer](https://github.com/pittisl/GreenTrainer) which is designed to speedup finetuning LLMs.
+
 If you are an NLP expert, you may know there are many existing PEFT works in NLP area, such as [prompt tuning](https://arxiv.org/abs/2104.08691), [prefix tuning](https://arxiv.org/abs/2101.00190), and [LoRA](https://arxiv.org/abs/2106.09685). These works focus on minimizing the number trainable parameters (usually to <1%) because they speculate that variance rather than bias is a dominant factor in model generalization. 
 
 However, **solely minimizing the number of trainable parameters doesn't gurantee wall-time speedup**. For example, prompt tuning still requires error gradients to propagate through the entire network, which leads to very limited wall-time speedup. On the other hand, nobody can promise variance is always a dominant factor in model generalzation. Unless you want to use super super large pretrained LLMs (e.g., GPT-3) with stunning zero-shot adaptability, applying PEFT to most medium-sized pretrained models would kill a lot of representational power for **complex generative tasks** (e.g., text summarization and math Q&A) and lose much accuracy.

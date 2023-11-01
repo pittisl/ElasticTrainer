@@ -10,6 +10,8 @@ This is the official code repository for our MobiSys 2023 paper [ElasticTrainer:
 
 :chart_with_upwards_trend: Want to reproduce our paper results? Please check instructions [here](#reproducing-paper-results).
 
+:bulb: If you plan to reproduce our results, we highly recommend you check experiment results **on tensorboard** since there has some bug report on our code of displaying figures.
+
 ## License
 
 Our source code is released under MIT License.
